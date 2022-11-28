@@ -13,6 +13,7 @@ use App\Models\Portofolio;
 use App\Models\Team;
 use App\Models\Beranda;
 use App\Models\About;
+use App\Models\ImageVisiMisi;
 use File;
 use DB;
 
@@ -358,6 +359,17 @@ public function beranda(){
 		$data_add->header = $request->input('header');
 		$data_add->deskripsi = $request->input('deskripsi');
 		
+		if($request->hasFile('image')){
+			$file = $request->file('image');
+			$filename = $file->getClientOriginalName();
+			$file->move('public/uploads/beranda/', $filename);
+			$data_add->image = $filename;
+
+
+		}else{
+			echo "Gagal upload gambar";
+		}
+
 		$data_add->save();
 
 		return redirect()->back()->with('success', 'Beranda Berhasil Ditambahkan');
@@ -374,6 +386,15 @@ public function beranda(){
 			'deskripsi' => $request->deskripsi,
 			
 		];
+
+		if ($file = $request->file('image')) {
+			if ($data_update->image) {
+				File::delete('public/uploads/beranda/' . $data_update->image);
+			}
+			$nama_file = $file->getClientOriginalName();
+			$file->move(public_path() . '/uploads/beranda/', $nama_file);
+			$input['image'] = $nama_file;
+		}
 
 		$data_update->update($input);
 
@@ -413,7 +434,16 @@ public function beranda(){
 		$data_add->twitter = $request->input('twitter');
 		$data_add->linkedin = $request->input('linkedin');
 
-		
+		if($request->hasFile('image')){
+			$file = $request->file('image');
+			$filename = $file->getClientOriginalName();
+			$file->move('public/uploads/about/', $filename);
+			$data_add->image = $filename;
+
+
+		}else{
+			echo "Gagal upload gambar";
+		}
 		$data_add->save();
 
 		return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
@@ -434,6 +464,15 @@ public function beranda(){
 			'linkedin' => $request->linkedin,
 			
 		];
+
+		if ($file = $request->file('image')) {
+			if ($data_update->image) {
+				File::delete('public/uploads/about/' . $data_update->image);
+			}
+			$nama_file = $file->getClientOriginalName();
+			$file->move(public_path() . '/uploads/about/', $nama_file);
+			$input['image'] = $nama_file;
+		}
 
 		$data_update->update($input);
 
@@ -456,8 +495,10 @@ public function beranda(){
 
 		$visi_misi = VisiMisi::orderby('id','DESC')->get();
 		// $count_visi_misi = VisiMisi::count();
+		$image = ImageVisiMisi::orderby('id', 'DESC')->first();
+		// return $image;
 
-		return view('admin.tentang_perusahaan.visi_misi',compact('visi_misi'));
+		return view('admin.tentang_perusahaan.visi_misi',compact('visi_misi','image'));
 	}
 
 
@@ -475,6 +516,102 @@ public function beranda(){
 		return redirect()->back()->with('success', 'Visi / Misi Berhasil Ditambahkan');
 	}
 
+	public function visi_misi_image_add(Request $request){
+
+
+		$data_add = new ImageVisiMisi();
+
+		
+		if($request->hasFile('image_visi')){
+			$file = $request->file('image_visi');
+			$filename = $file->getClientOriginalName();
+			$file->move('public/uploads/visi_misi_image/', $filename);
+			$data_add->image_visi = $filename;
+
+
+		}else{
+			echo "Gagal upload gambar";
+		}
+
+
+		if($request->hasFile('image_misi')){
+			$file = $request->file('image_misi');
+			$filename = $file->getClientOriginalName();
+			$file->move('public/uploads/visi_misi_image/', $filename);
+			$data_add->image_misi = $filename;
+
+
+		}else{
+			echo "Gagal upload gambar";
+		}
+
+		$data_add->save();
+
+		return redirect()->back()->with('success', 'Gambar Berhasil Ditambahkan');
+	}
+
+
+	public function visi_misi_image_update(Request $request){
+
+
+		$data_update = ImageVisiMisi::orderBy('id', 'DESC')->first();
+
+		
+		if ($file = $request->file('image_visi')) {
+			if ($data_update->image_visi) {
+				File::delete('public/uploads/visi_misi_image/' . $data_update->image_visi);
+			}
+			$nama_file = $file->getClientOriginalName();
+			$file->move(public_path() . '/uploads/visi_misi_image/', $nama_file);
+			$input['image_visi'] = $nama_file;
+		}
+
+		if ($file = $request->file('image_misi')) {
+			if ($data_update->image_misi) {
+				File::delete('public/uploads/visi_misi_image/' . $data_update->image_misi);
+			}
+			$nama_file = $file->getClientOriginalName();
+			$file->move(public_path() . '/uploads/visi_misi_image/', $nama_file);
+			$input['image_misi'] = $nama_file;
+		}
+
+		$data_update->update($input);
+
+		return redirect()->back()->with('success', 'Gambar Berhasil Diupdate');
+	}
+
+
+
+	public function visi_misi_image_delete(Request $request){
+
+
+		$data_delete = ImageVisiMisi::orderBy('id', 'DESC')->first();
+		// return $data_delete;
+		
+		if ($file = $request->file('image_visi')) {
+			if ($data_delete->image_visi) {
+				File::delete('public/uploads/visi_misi_image/' . $data_delete->image_visi);
+			}
+			$input = [
+			'image_visi' => $request->image_visi,
+
+		];
+		}
+
+		if ($file = $request->file('image_misi')) {
+			if ($data_delete->image_misi) {
+				File::delete('public/uploads/visi_misi_image/' . $data_delete->image_misi);
+			}
+			$input = [
+			'image_visi' => $request->image_visi,
+
+		];
+		}
+
+		$data_delete->update($input);
+
+		return redirect()->back()->with('success', 'Gambar Berhasil Dihapus');
+	}
 
 	public function visi_misi_update(Request $request, $id)
 	{

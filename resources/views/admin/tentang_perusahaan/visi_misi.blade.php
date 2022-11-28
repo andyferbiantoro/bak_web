@@ -116,9 +116,106 @@ BAK INDONESIA ADMIN
 </div>
 </div>
 </div>
+<!-- =======================================================================================================================?? -->
+
+<div class="row">
+ <div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <h4 style="color: #1C75BC">Gambar</h4><br>
+    </div>
+
+
+    <div class="card-body">
+    <!--  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#ModalTambahGambar">
+      Tambah Gambar
+    </button><br><hr> -->
+
+    <div class="row">
+     <div class="col-lg-6 text-center">
+      <img style="border-radius: 0%; height: 350px; width: auto;"  src="{{asset('public/uploads/visi_misi_image/'.$image->image_visi)}}">
+      <p>Image Visi</p><br>
+      <form method="post" action="{{route('visi_misi_image_update')}}" enctype="multipart/form-data">
+        {{csrf_field()}}
+        <div class="form-group">
+          <input type="file" class="form-control" id="image_visi" name="image_visi" required=""></input><br>
+          <button class="btn btn-primary" type="Submit">Perbarui Foto</button>
+        </div>
+      </form>
+
+      <!-- <form method="post" action="{{route('visi_misi_image_delete')}}" enctype="multipart/form-data">
+        {{csrf_field()}}
+        <div class="form-group">
+          <button class="btn btn-danger" type="Submit">Hapus Foto</button>
+        </div>
+      </form> -->
+    </div>
+
+    <div class="col-lg-6 text-center">
+      <img style="border-radius: 0%; height: 350px; width: auto;"  src="{{asset('public/uploads/visi_misi_image/'.$image->image_misi)}}">
+      <p>Image Misi</p><br>
+      <form method="post" action="{{route('visi_misi_image_update')}}" enctype="multipart/form-data">
+        {{csrf_field()}}
+        <div class="form-group">
+          <input type="file" class="form-control" id="image_misi" name="image_misi" required=""></input><br>
+          <button class="btn btn-primary" type="Submit">Perbarui Foto</button>
+        </div>
+      </form>
+
+      <!-- <form method="post" action="{{route('visi_misi_image_delete')}}" enctype="multipart/form-data">
+        {{csrf_field()}}
+        <div class="form-group">
+          <button class="btn btn-danger" type="Submit">Hapus Foto</button>
+        </div>
+      </form> -->
+    </div>
+  </div>
+  <hr><br>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 
 <!-- ======================================================================================================================= -->
 
+<!-- Modal Tambah -->
+<div class="modal fade" id="ModalTambahGambar" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myLargeModalLabel">Tambah Gambar</h5>
+      </div>
+      <div class="modal-body">
+       <form method="post" action="{{route('visi_misi_image_add')}}" enctype="multipart/form-data">
+
+        {{csrf_field()}}
+
+        <div class="form-group">
+          <label for="image_visi">Image Misi</label>
+          <input type="file" class="form-control" id="image_visi" name="image_visi"  required=""></input>
+        </div>
+
+        <div class="form-group">
+          <label for="image_misi">Image Misi</label>
+          <input type="file" class="form-control" id="image_misi" name="image_misi"  required=""></input>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="Submit">Tambahkan</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+
+<!-- ============================================================================================================= -->
 <!-- Modal Tambah -->
 <div class="modal fade" id="ModalTambahVisi" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">

@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-        <img src="public/assets_land/img/intro.png" class="img-fluid" alt="">
+        <img src="{{asset('public/uploads/beranda/'.$beranda->image)}}" class="img-fluid" alt="">
       </div>
     </div>
   </div>
@@ -132,7 +132,7 @@
         </div>
 
         <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-          <img src="public/assets_land/img/team.png" class="img-fluid" alt="">
+          <img src="{{asset('public/uploads/about/'.$about->image)}}" class="img-fluid" alt="">
         </div>
 
       </div>
@@ -154,7 +154,7 @@
 
         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="box">
-            <img src="public/assets_land/img/startup.png" class="img-fluid" alt="">
+            <img src="{{asset('public/uploads/visi_misi_image/'.$visi_misi_image->image_visi)}}" class="img-fluid" alt="">
             <h3>VISI</h3>
             <ul>
               @foreach($visi_misi as $vis)
@@ -169,7 +169,7 @@
 
         <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
           <div class="box">
-            <img src="public/assets_land/img/progres.png" class="img-fluid" alt="">
+            <img src="{{asset('public/uploads/visi_misi_image/'.$visi_misi_image->image_misi)}}" class="img-fluid" alt="">
             <h3>MISI</h3>
             <ul>
               @foreach($visi_misi as $mis)
@@ -243,7 +243,7 @@
 
       <header class="section-header">
         <h2>Layannan kami</h2>
-        <p>Hal apa saja yang bisa kami tawarkan ?</p>
+        <p>Hal Apa Saja Yang Bisa Kami Tawarkan ?</p>
       </header>
 
       <div class="row gy-4">

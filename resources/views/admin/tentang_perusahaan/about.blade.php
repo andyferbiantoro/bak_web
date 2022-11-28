@@ -38,6 +38,7 @@ BAK INDONESIA ADMIN
             <th>Facebook</th>
             <th>Twitter</th>
             <th>LinkedIn</th>
+            <th>Gambar</th>
             <th>Opsi</th>
             <th style="display: none;">hidden</th>
           </tr>
@@ -53,6 +54,7 @@ BAK INDONESIA ADMIN
             <td>{{$data->facebook}}</td>
             <td>{{$data->twitter}}</td>
             <td>{{$data->linkedin}}</td>
+            <td><img style="border-radius: 0%" height="70" id="ImageTampil" src="{{asset('public/uploads/about/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
             <td>
                <button class="btn btn-success btn-sm editAbout">Edit</button>
 
@@ -117,6 +119,11 @@ BAK INDONESIA ADMIN
         <div class="form-group">
           <label for="linkedin">Link LinkedIn (Opsional)</label>
           <input type="text" class="form-control" id="linkedin" name="linkedin" ></input>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Gambar</label>
+          <input type="file" class="form-control" id="image" name="image"  required=""></input>
         </div>
 
       </div>
@@ -184,6 +191,11 @@ BAK INDONESIA ADMIN
         <div class="form-group">
           <label for="linkedin">Link LinkedIn (Opsional)</label>
           <input type="text" class="form-control" id="linkedin_update" name="linkedin" ></input>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Gambar</label>
+          <input type="file" class="form-control" id="image_update" name="image"  required=""></input>
         </div>
 
       </div> 
@@ -266,7 +278,7 @@ BAK INDONESIA ADMIN
       $('#facebook_update').val(data[4]);
       $('#twitter_update').val(data[5]);
       $('#linkedin_update').val(data[6]);
-      $('#updateAboutform').attr('action','about_update/'+ data[8]);
+      $('#updateAboutform').attr('action','about_update/'+ data[9]);
       $('#updateAbout').modal('show');
     });
   });

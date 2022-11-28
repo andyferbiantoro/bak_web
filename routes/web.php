@@ -100,6 +100,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::post('/about_update/{id}', [AdminController::class, 'about_update'])->name('about_update');
 	Route::post('/about_delete/{id}', [AdminController::class, 'about_delete'])->name('about_delete');
 
+
+	Route::post('/visi_misi_image_add', [AdminController::class, 'visi_misi_image_add'])->name('visi_misi_image_add');
+	Route::post('/visi_misi_image_update', [AdminController::class, 'visi_misi_image_update'])->name('visi_misi_image_update');
+	Route::post('/visi_misi_image_delete', [AdminController::class, 'visi_misi_image_delete'])->name('visi_misi_image_delete');
+
 	// Route::post('/detail_jasa_add', [AdminController::class, 'detail_jasa_add'])->name('detail_jasa_add');
 
 

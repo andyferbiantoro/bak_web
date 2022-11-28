@@ -33,6 +33,7 @@ BAK INDONESIA ADMIN
             <th>No</th>
             <th>Header</th>
             <th>Deskripsi</th>
+            <th>Gambar</th>
             <th>Opsi</th>
             <th style="display: none;">hidden</th>
           </tr>
@@ -44,6 +45,7 @@ BAK INDONESIA ADMIN
             <td>{{$no++}}</td>
             <td>{{$data->header}}</td>
             <td>{{$data->deskripsi}}</td>
+            <td><img style="border-radius: 0%" height="70" id="ImageTampil" src="{{asset('public/uploads/beranda/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
             <td>
                <button class="btn btn-success btn-sm editBeranda">Edit</button>
 
@@ -90,6 +92,11 @@ BAK INDONESIA ADMIN
           <input type="text" class="form-control" id="deskripsi" name="deskripsi"  required=""></input>
         </div>
 
+        <div class="form-group">
+          <label for="image">Gambar</label>
+          <input type="file" class="form-control" id="image" name="image"  required=""></input>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" type="Submit">Tambahkan</button>
@@ -133,7 +140,12 @@ BAK INDONESIA ADMIN
 
         <div class="form-group">
           <label for="deskripsi">Deskripsi</label>
-          <input type="text" class="form-control" id="deskripsi-update" name="deskripsi"  required=""></input>
+          <input type="text" class="form-control" id="deskripsi_update" name="deskripsi"  required=""></input>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Gambar</label>
+          <input type="file" class="form-control" id="image_update" name="image"  required=""></input>
         </div>
 
       </div> 
@@ -210,9 +222,8 @@ BAK INDONESIA ADMIN
       }
       var data = table.row($tr).data();
       console.log(data);
-      $('#jumlah_Beranda_update').val(data[1]);
-      $('#penilaian_update').val(data[2]);
-      $('#jumlah_mitra_update').val(data[3]);
+      $('#header_update').val(data[1]);
+      $('#deskripsi_update').val(data[2]);
       $('#updateBerandaform').attr('action','beranda_update/'+ data[5]);
       $('#updateBeranda').modal('show');
     });

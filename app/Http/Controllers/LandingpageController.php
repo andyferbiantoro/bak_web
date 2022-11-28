@@ -12,6 +12,7 @@ use App\Models\Portofolio;
 use App\Models\Team;
 use App\Models\Beranda;
 use App\Models\About;
+use App\Models\ImageVisiMisi;
 
 
 
@@ -35,7 +36,9 @@ class LandingpageController extends Controller
 		$beranda = Beranda::orderBy('id', 'DESC')->first();
 		$about = About::orderBy('id', 'DESC')->first();
 
-		return view('landingpage.index', compact('jasa','kontak','visi_misi','kerjasama','team','portofolio','filter_portofolio','beranda','about'));
+
+		$visi_misi_image = ImageVisiMisi::orderBy('id', 'DESC')->first();
+		return view('landingpage.index', compact('jasa','kontak','visi_misi','kerjasama','team','portofolio','filter_portofolio','beranda','about','visi_misi_image'));
 	}
 
 	public function detail_jasa($id)
