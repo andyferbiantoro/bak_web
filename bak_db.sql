@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Nov 2022 pada 04.09
+-- Waktu pembuatan: 28 Nov 2022 pada 15.42
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.0.23
 
@@ -35,6 +35,7 @@ CREATE TABLE `abouts` (
   `facebook` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `twitter` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `linkedin` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -43,8 +44,8 @@ CREATE TABLE `abouts` (
 -- Dumping data untuk tabel `abouts`
 --
 
-INSERT INTO `abouts` (`id`, `header`, `deskripsi`, `instagram`, `facebook`, `twitter`, `linkedin`, `created_at`, `updated_at`) VALUES
-(2, 'SIAPA KAMI?', 'ini adlaah deskripsinyaaaaa', 'superbak_ig', 'superbak_fbook', 'superbak_tw', 'superbak_linked', '2022-11-27 19:38:40', '2022-11-27 19:45:27');
+INSERT INTO `abouts` (`id`, `header`, `deskripsi`, `instagram`, `facebook`, `twitter`, `linkedin`, `image`, `created_at`, `updated_at`) VALUES
+(2, 'SIAPA KAMI?', 'ini adlaah deskripsinyaaaaa', 'superbak_ig', 'superbak_fbook', 'superbak_tw', 'superbak_linked', 'team.png', '2022-11-27 19:38:40', '2022-11-28 06:20:35');
 
 -- --------------------------------------------------------
 
@@ -56,6 +57,7 @@ CREATE TABLE `berandas` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `header` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `deskripsi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -64,8 +66,8 @@ CREATE TABLE `berandas` (
 -- Dumping data untuk tabel `berandas`
 --
 
-INSERT INTO `berandas` (`id`, `header`, `deskripsi`, `created_at`, `updated_at`) VALUES
-(2, 'BAK INDONESIA', 'ini adalah berandanya guyss', '2022-11-27 19:08:36', '2022-11-27 19:08:36');
+INSERT INTO `berandas` (`id`, `header`, `deskripsi`, `image`, `created_at`, `updated_at`) VALUES
+(2, 'BAK INDONESIA', 'ini adalah berandanya guyssssss', 'team_meet.png', '2022-11-27 19:08:36', '2022-11-28 06:19:41');
 
 -- --------------------------------------------------------
 
@@ -108,6 +110,27 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `image_visi_misis`
+--
+
+CREATE TABLE `image_visi_misis` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image_visi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_misi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `image_visi_misis`
+--
+
+INSERT INTO `image_visi_misis` (`id`, `image_visi`, `image_misi`, `created_at`, `updated_at`) VALUES
+(1, 'team_meet.png', 'kerjasama.png', '2022-11-28 07:10:48', '2022-11-28 07:20:35');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `jasas`
 --
 
@@ -130,7 +153,8 @@ CREATE TABLE `jasas` (
 
 INSERT INTO `jasas` (`id`, `nama_jasa`, `foto_jasa_1`, `foto_jasa_2`, `foto_jasa_3`, `foto_jasa_4`, `foto_jasa_5`, `deskripsi`, `created_at`, `updated_at`) VALUES
 (1, 'Website & Mobile Apps', 'website.jpg', 'website2.jpg', 'website3.jpg', NULL, NULL, 'kami akan membantu segala permasalahan anda terkain dengan pembuatan Apliaksi dan Website', '2022-11-24 19:39:02', '2022-11-24 19:39:02'),
-(11, 'Konveksi', 'poster.jpg', 'mitra.png', NULL, NULL, NULL, 'kami akan memberikan pelayanan terbaik untuk anda', '2022-11-27 09:36:00', '2022-11-27 20:02:46');
+(11, 'Konveksi', 'media.png', 'mitra.png', NULL, NULL, NULL, 'kami akan memberikan pelayanan terbaik untuk anda', '2022-11-27 09:36:00', '2022-11-28 06:37:31'),
+(15, 'Digital Marketing', 'progres.png', NULL, NULL, NULL, NULL, 'digital marketing', '2022-11-28 07:38:14', '2022-11-28 07:38:14');
 
 -- --------------------------------------------------------
 
@@ -205,7 +229,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2022_11_27_024055_create_portofolios_table', 5),
 (11, '2022_11_27_033023_create_teams_table', 6),
 (12, '2022_11_27_233124_create_abouts_table', 7),
-(13, '2022_11_27_233238_create_berandas_table', 7);
+(13, '2022_11_27_233238_create_berandas_table', 7),
+(14, '2022_11_28_133833_create_image_visi_misis_table', 8);
 
 -- --------------------------------------------------------
 
@@ -372,6 +397,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indeks untuk tabel `image_visi_misis`
+--
+ALTER TABLE `image_visi_misis`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `jasas`
 --
 ALTER TABLE `jasas`
@@ -463,10 +494,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `image_visi_misis`
+--
+ALTER TABLE `image_visi_misis`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `jasas`
 --
 ALTER TABLE `jasas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `kerjasamas`
@@ -484,7 +521,7 @@ ALTER TABLE `kontaks`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
