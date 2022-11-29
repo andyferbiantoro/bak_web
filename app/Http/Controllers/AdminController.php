@@ -849,7 +849,23 @@ public function portofolio(){
 		
 		// return $portofolio;
 
-		return view('admin.tentang_perusahaan.portofolio',compact('portofolio','list_jasa'));
+		return view('admin.tentang_perusahaan.portofolio.index',compact('portofolio','list_jasa'));
+	}
+
+
+	public function portofolio_edit($id){
+
+		
+		$edit_portofolio = DB::table('portofolios')
+		->join('jasas' , 'portofolios.id_jasa', '=' , 'jasas.id')
+		->select('portofolios.*','jasas.nama_jasa')
+		->orderBy('portofolios.id','DESC')
+		->where('portofolios.id', $id)
+		->get();
+
+		$list_jasa = Jasa::orderby('id', 'DESC')->get();
+		
+		return view('admin.tentang_perusahaan.portofolio.edit',compact('edit_portofolio','list_jasa'));
 	}
 
 

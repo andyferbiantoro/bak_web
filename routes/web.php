@@ -81,13 +81,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 	Route::get('/portofolio', [AdminController::class, 'portofolio'])->name('portofolio');
+	Route::get('/portofolio_edit{id}', [AdminController::class, 'portofolio_edit'])->name('portofolio_edit');
 	Route::post('/portofolio_add', [AdminController::class, 'portofolio_add'])->name('portofolio_add');
 	Route::post('/portofolio_update/{id}', [AdminController::class, 'portofolio_update'])->name('portofolio_update');
 	Route::post('/portofolio_delete/{id}', [AdminController::class, 'portofolio_delete'])->name('portofolio_delete');
 
 	Route::get('/team', [AdminController::class, 'team'])->name('team');
-	Route::post('/team_add', [AdminController::class, 'team_add'])->name('team_add');
 	Route::get('/team_edit{id}', [AdminController::class, 'team_edit'])->name('team_edit');
+	Route::post('/team_add', [AdminController::class, 'team_add'])->name('team_add');
 	Route::post('/team_update/{id}', [AdminController::class, 'team_update'])->name('team_update');
 	Route::post('/team_delete/{id}', [AdminController::class, 'team_delete'])->name('team_delete');
 
