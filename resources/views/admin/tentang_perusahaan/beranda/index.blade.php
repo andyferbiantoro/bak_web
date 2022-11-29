@@ -47,7 +47,7 @@ BAK INDONESIA ADMIN
             <td>{{$data->deskripsi}}</td>
             <td><img style="border-radius: 0%" height="70" id="ImageTampil" src="{{asset('public/uploads/beranda/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
             <td>
-               <button class="btn btn-success btn-sm editBeranda">Edit</button>
+               <a href="{{ route('beranda_edit',$data->id) }}"><button class="btn btn-warning btn-sm ">Edit</button></a>
 
                <a href="#" data-toggle="modal" onclick="deleteData({{$data->id}})" data-target="#DeleteModal">
               <button class="btn btn-danger btn-sm"  title="Hapus">Hapus</button>

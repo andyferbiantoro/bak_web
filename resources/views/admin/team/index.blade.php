@@ -56,7 +56,8 @@ BAK INDONESIA ADMIN
             <td>{{$data->linkedin}}</td>
             <td><img style="border-radius: 0%" height="70" id="ImageTampil" src="{{asset('public/uploads/team/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
             <td>
-               <button class="btn btn-success btn-sm editTeam">Edit</button>
+               
+               <a href="{{ route('team_edit',$data->id) }}"><button class="btn btn-warning btn-sm ">Edit</button></a>
 
                <a href="#" data-toggle="modal" onclick="deleteData({{$data->id}})" data-target="#DeleteModal">
               <button class="btn btn-danger btn-sm"  title="Hapus">Hapus</button>

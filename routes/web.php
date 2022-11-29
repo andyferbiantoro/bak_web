@@ -87,15 +87,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 	Route::get('/team', [AdminController::class, 'team'])->name('team');
 	Route::post('/team_add', [AdminController::class, 'team_add'])->name('team_add');
+	Route::get('/team_edit{id}', [AdminController::class, 'team_edit'])->name('team_edit');
 	Route::post('/team_update/{id}', [AdminController::class, 'team_update'])->name('team_update');
 	Route::post('/team_delete/{id}', [AdminController::class, 'team_delete'])->name('team_delete');
 
 	Route::get('/beranda', [AdminController::class, 'beranda'])->name('beranda');
+	Route::get('/beranda_edit{id}', [AdminController::class, 'beranda_edit'])->name('beranda_edit');
 	Route::post('/beranda_add', [AdminController::class, 'beranda_add'])->name('beranda_add');
 	Route::post('/beranda_update/{id}', [AdminController::class, 'beranda_update'])->name('beranda_update');
 	Route::post('/beranda_delete/{id}', [AdminController::class, 'beranda_delete'])->name('beranda_delete');
 
 	Route::get('/about', [AdminController::class, 'about'])->name('about');
+	Route::get('/about_edit{id}', [AdminController::class, 'about_edit'])->name('about_edit');
 	Route::post('/about_add', [AdminController::class, 'about_add'])->name('about_add');
 	Route::post('/about_update/{id}', [AdminController::class, 'about_update'])->name('about_update');
 	Route::post('/about_delete/{id}', [AdminController::class, 'about_delete'])->name('about_delete');

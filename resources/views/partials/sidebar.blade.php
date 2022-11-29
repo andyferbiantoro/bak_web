@@ -17,7 +17,7 @@
             <ul class="dropdown-menu">
             	<li class="{{(request()->is('beranda')) ? 'active' : ''}}"><a class="nav-link" href="{{ route('beranda') }}"><i class="fas fa-circle"></i><span>Beranda</span></a></li>
 
-            	<li class="{{(request()->is('about')) ? 'active' : ''}}"><a class="nav-link" href="{{ route('about') }}"><i class="fas fa-circle"></i><span>About</span></a></li>
+            	<li class="{{(request()->is('about')) ? 'active' : ''}}"><a class="nav-link" href="{{ route('about') }}"><i class="fas fa-circle"></i><span>Tentang Kami</span></a></li>
 
             	<li class="{{(request()->is('visi_misi')) ? 'active' : ''}}"><a class="nav-link" href="{{ route('visi_misi') }}"><i class="fas fa-circle"></i><span>Visi Misi</span></a></li>
             	

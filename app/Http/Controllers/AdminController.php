@@ -341,14 +341,25 @@ class AdminController extends Controller
 	}
 	
 // ==========================================================================================================================
-public function beranda(){
+	public function beranda(){
 
 		$beranda = Beranda::all();
 		$count = Beranda::count();
 		// $count_beranda = VisiMisi::count();
 
-		return view('admin.tentang_perusahaan.beranda',compact('beranda','count'));
+		return view('admin.tentang_perusahaan.beranda.index',compact('beranda','count'));
 	}
+
+
+	public function beranda_edit($id){
+
+		$edit_beranda = Beranda::orderby('id','DESC')->where('id', $id)->get();
+		// $nama_team = Team::where('id',$id)->first();
+		
+		return view('admin.tentang_perusahaan.beranda.edit',compact('edit_beranda'));
+	}
+
+
 
 
 	public function beranda_add(Request $request){
@@ -418,8 +429,18 @@ public function beranda(){
 		$count = About::count();
 		// $count_about = VisiMisi::count();
 
-		return view('admin.tentang_perusahaan.about',compact('about','count'));
+		return view('admin.tentang_perusahaan.about.index',compact('about','count'));
 	}
+
+
+	public function about_edit($id){
+
+		$edit_about = About::orderby('id','DESC')->where('id', $id)->get();
+		// $nama_team = Team::where('id',$id)->first();
+		
+		return view('admin.tentang_perusahaan.about.edit',compact('edit_about'));
+	}
+
 
 
 	public function about_add(Request $request){
@@ -923,6 +944,16 @@ public function portofolio(){
 		// $count_team = VisiMisi::count();
 
 		return view('admin.team.index',compact('team'));
+	}
+
+
+
+	public function team_edit($id){
+
+		$team = Team::orderby('id','DESC')->where('id', $id)->get();
+		$nama_team = Team::where('id',$id)->first();
+		
+		return view('admin.team.edit',compact('team','nama_team'));
 	}
 
 

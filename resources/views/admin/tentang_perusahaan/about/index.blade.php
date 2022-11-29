@@ -11,7 +11,7 @@ BAK INDONESIA ADMIN
  <div class="col-lg-12">
   <div class="card">
     <div class="card-header">
-      <h4 style="color: #1C75BC">Informasi Perusahaan / About</h4><br>
+      <h4 style="color: #1C75BC">Informasi Perusahaan / Tentang Kami</h4><br>
     </div>
 
 
@@ -56,7 +56,7 @@ BAK INDONESIA ADMIN
             <td>{{$data->linkedin}}</td>
             <td><img style="border-radius: 0%" height="70" id="ImageTampil" src="{{asset('public/uploads/about/'.$data->image)}}"  data-toggle="modal" data-target="#myModal"></img></td>
             <td>
-               <button class="btn btn-success btn-sm editAbout">Edit</button>
+               <a href="{{ route('about_edit',$data->id) }}"><button class="btn btn-warning btn-sm ">Edit</button></a>
 
                <a href="#" data-toggle="modal" onclick="deleteData({{$data->id}})" data-target="#DeleteModal">
               <button class="btn btn-danger btn-sm"  title="Hapus">Hapus</button>
